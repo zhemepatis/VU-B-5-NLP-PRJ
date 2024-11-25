@@ -6,7 +6,7 @@ def extract_movie_year(title_cell):
     match = re.search(pattern, title_cell)
 
     if match:
-        return match.group(1)
+        return int(match.group(1))
     
     return None
 
