@@ -1,4 +1,5 @@
 import re
+import pandas as pd
 
 
 def extract_movie_year(title_cell):
@@ -24,3 +25,8 @@ def clean_movie_title(title_cell):
         return match.group(1)
     
     return None
+
+
+def check_data_type(df, expected_data_type):
+    df = df.apply(lambda value: value if isinstance(value, expected_data_type) else pd.NA)
+    return df
