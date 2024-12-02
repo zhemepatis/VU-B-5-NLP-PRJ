@@ -97,3 +97,16 @@ def process_movie_list(movie_list, token_file, output_csv):
             #    print(f"m_id:{movie_id}::404")
     
     print(f"Movie details saved to {output_csv} incrementally.")
+
+
+def preprocess_text(text, nlp, stop_words):
+    if not isinstance(text, str) or not text.strip():
+        return ""
+    
+    doc = nlp(text.lower())
+
+    cleaned_tokens = [
+        token.lemma_ for token in doc 
+        if token.is_alpha and token.lemma_ not in stop_words
+    ]
+    return " ".join(cleaned_tokens)
