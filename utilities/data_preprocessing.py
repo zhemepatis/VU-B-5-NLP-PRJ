@@ -59,8 +59,8 @@ def process_movie_list(movie_list, token_file, output_csv):
     
     if os.path.exists(output_csv):
         existing_data = pd.read_csv(output_csv)
-        processed_ids = set(existing_data['movieId'])
-        last_processed_id = max(existing_data['movieId'])
+        processed_ids = set(existing_data['tmdbId'])
+        last_processed_id = max(existing_data['tmdbId'])
     else:
         existing_data = pd.DataFrame()
         processed_ids = set()
@@ -76,7 +76,7 @@ def process_movie_list(movie_list, token_file, output_csv):
             details = get_movie_details(movie_id, access_token)
             if details:
                 extracted_details = {
-                    "movieId": details.get("id"),
+                    "tmdbId": details.get("id"),
                     "title": details.get("title"),
                     "original_title": details.get("original_title"),
                     "release_date": details.get("release_date"),
