@@ -1,3 +1,5 @@
 data/
-access_token.json
+output/
 __pycache__
+
+access_token.json
